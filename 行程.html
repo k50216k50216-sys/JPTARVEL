@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2026 日本櫻花紀行 (New)</title>
+    <title>2026 日本櫻花紀行 (Navi)</title>
     <style>
         :root {
             --jp-red: #d93535;
@@ -134,6 +134,22 @@
         .tag-important { background: #ffebee; color: #c62828; }
         .tag-backup { background: #fffde7; color: #f57f17; border: 1px solid #fff9c4; }
 
+        /* 導航按鈕樣式 */
+        .btn-map {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 8px;
+            padding: 6px 12px;
+            background: #4285F4;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .btn-map:active { background: #3367D6; }
+
         /* 底部固定導航 */
         .nav-bar {
             position: fixed;
@@ -169,7 +185,7 @@
 
 <div class="header">
     <div style="font-size: 0.8em; opacity: 0.9;">2026 APRIL</div>
-    <div style="font-size: 1.1em; font-weight: bold;">日本櫻花紀行 (詳細版)</div>
+    <div style="font-size: 1.1em; font-weight: bold;">日本櫻花紀行 (導航版)</div>
 </div>
 
 <div id="day1" class="day-page active">
@@ -202,31 +218,24 @@
         </div>
         <div class="card" onclick="toggleCard(this)">
             <div class="card-header">
-                <div class="time">上午</div>
-                <div class="event-title">自駕往富士山</div>
-                <div class="status-icon">▼</div>
-            </div>
-            <div class="details">沿途停靠：Makuhari PA (Down)、談合坂服務區。</div>
-        </div>
-        <div class="card" onclick="toggleCard(this)">
-            <div class="card-header">
                 <div class="time">下午</div>
-                <div class="event-title">景點巡禮</div>
+                <div class="event-title">新倉山淺間公園</div>
                 <div class="status-icon">▼</div>
             </div>
             <div class="details">
-                新倉山淺間公園、富士吉田懷舊商店街。
+                著名的富士山展望景點，拍攝五重塔與富士山。<br>
+                <a href="https://maps.google.com/?cid=10371357274634952829&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 Google 導覽</a>
             </div>
         </div>
         <div class="card" onclick="toggleCard(this)">
             <div class="card-header">
                 <div class="time">晚上</div>
-                <div class="event-title">夜櫻 & 食事</div>
+                <div class="event-title">不動茶屋 東恋路店</div>
                 <div class="status-icon">▼</div>
             </div>
             <div class="details">
-                淺川溫泉街夜櫻。<br>
-                <span class="tag tag-food">餐廳</span> 不動茶屋 東恋路店 OR 小作餺飥熊肉麵。
+                <span class="tag tag-food">餐廳</span> 獨特白雲造型外觀的不動茶屋。<br>
+                <a href="https://maps.google.com/?cid=6292605100928305957&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 Google 導覽</a>
             </div>
         </div>
     </div>
@@ -234,25 +243,13 @@
     <div id="day1-backup" class="contingency-section">
         <div class="card active-backup" onclick="toggleCard(this)">
             <div class="card-header">
-                <div class="time">D1備案</div>
-                <div class="event-title">成田取車 → 高遠城址</div>
+                <div class="time">下午</div>
+                <div class="event-title">高遠城址公園</div>
                 <div class="status-icon">▼</div>
             </div>
             <div class="details">
-                <span class="tag tag-backup">備案</span> 租車手續同上。<br>
-                沿途停靠PA/SA休息。<br>
-                <span class="important">變更</span> 先前往高遠城址公園(天下第一櫻)。
-            </div>
-        </div>
-        <div class="card active-backup" onclick="toggleCard(this)">
-            <div class="card-header">
-                <div class="time">晚上</div>
-                <div class="event-title">夜櫻 & 食事</div>
-                <div class="status-icon">▼</div>
-            </div>
-            <div class="details">
-                <span class="tag tag-backup">備案</span> 淺川溫泉街夜櫻。<br>
-                <span class="tag tag-food">餐廳</span> 高遠そば ますや/華留運。
+                <span class="tag tag-backup">備案</span> 天下第一櫻景點。<br>
+                <a href="https://maps.google.com/?cid=1951060922297535595&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 Google 導覽</a>
             </div>
         </div>
     </div>
@@ -269,21 +266,13 @@
     <div id="day2-main" class="main-section contingency-section active">
         <div class="card" onclick="toggleCard(this)">
             <div class="card-header">
-                <div class="time">07:30</div>
-                <div class="event-title">起床出發 (行李上車)</div>
-                <div class="status-icon">▼</div>
-            </div>
-            <div class="details">早餐車上吃（超商或超市提前買好）。</div>
-        </div>
-        <div class="card" onclick="toggleCard(this)">
-            <div class="card-header">
                 <div class="time">上午</div>
                 <div class="event-title">高遠城址公園</div>
                 <div class="status-icon">▼</div>
             </div>
             <div class="details">
-                「天下第一櫻」。<br>
-                <span class="tag tag-food">餐廳</span> 高遠そば ますya/華留運。
+                「天下第一櫻」散策。<br>
+                <a href="https://maps.google.com/?cid=1951060922297535595&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 Google 導覽</a>
             </div>
         </div>
         <div class="card" onclick="toggleCard(this)">
@@ -292,28 +281,9 @@
                 <div class="event-title">河口淺間神社</div>
                 <div class="status-icon">▼</div>
             </div>
-            <div class="details">遙拜所觀景台 (天空鳥居)。</div>
-        </div>
-        <div class="card" onclick="toggleCard(this)">
-            <div class="card-header">
-                <div class="time">16:00</div>
-                <div class="event-title">回程 (Fumada → 中野)</div>
-                <div class="status-icon">▼</div>
-            </div>
             <div class="details">
-                <span class="important">提醒</span> 注意中央道收假塞車。<br>
-                中野 Sunmall 商店街散策。
-            </div>
-        </div>
-        <div class="card" onclick="toggleCard(this)">
-            <div class="card-header">
-                <div class="time">晚上</div>
-                <div class="event-title">中野還車 & 晚餐</div>
-                <div class="status-icon">▼</div>
-            </div>
-            <div class="details">
-                中野站前 TOYOTA 還車。<br>
-                正在變身中(拉麵) OR <span class="tag tag-food">餐廳</span> 陸蒸汽居酒屋(烤魚)。
+                前往遙拜所觀景台 (天空鳥居)。<br>
+                <a href="https://maps.google.com/?cid=8266143119040576446&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 Google 導覽</a>
             </div>
         </div>
     </div>
@@ -321,56 +291,14 @@
     <div id="day2-backup" class="contingency-section">
         <div class="card active-backup" onclick="toggleCard(this)">
             <div class="card-header">
-                <div class="time">08:00</div>
-                <div class="event-title">起床/備案行李上車</div>
+                <div class="time">上午</div>
+                <div class="event-title">新倉山淺間公園</div>
                 <div class="status-icon">▼</div>
             </div>
             <div class="details">
-                <span class="tag tag-backup">備案</span> 懷舊商店街尋找早餐。<br>
-                新倉山淺間公園。
+                <span class="tag tag-backup">備案</span> 備案行程景點。<br>
+                <a href="https://maps.google.com/?cid=10371357274634952829&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 Google 導覽</a>
             </div>
-        </div>
-        <div class="card active-backup" onclick="toggleCard(this)">
-            <div class="card-header">
-                <div class="time">下午</div>
-                <div class="event-title">景點選擇</div>
-                <div class="status-icon">▼</div>
-            </div>
-            <div class="details">
-                <span class="tag tag-backup">備案</span> 河口淺間神社/遙拜所/LOWSON/山中湖。<br>
-                <span class="tag tag-food">餐廳</span> 不動茶屋 東恋路店 OR 小作餺飥麵。
-            </div>
-        </div>
-        <div class="card active-backup" onclick="toggleCard(this)">
-            <div class="card-header">
-                <div class="time">16:00</div>
-                <div class="event-title">回中野還車</div>
-                <div class="status-icon">▼</div>
-            </div>
-            <div class="details">中野 Sunmall、陸蒸汽居酒屋。</div>
-        </div>
-    </div>
-</div>
-
-<div id="day3" class="day-page">
-    <h3>4/13 (一) 原宿與澀谷</h3>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
-            <div class="time">上午</div>
-            <div class="event-title">明治神宮散策</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">Takeshita Street → Omotesando。</div>
-    </div>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
-            <div class="time">12:00</div>
-            <div class="event-title">澀谷午餐</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">
-            <span class="tag tag-food">餐廳</span> 敘敘苑燒肉午餐。<br>
-            下午：在澀谷尋找免費觀景台。
         </div>
     </div>
 </div>
@@ -379,12 +307,14 @@
     <h3>4/14 (二) 迪士尼海洋 DisneySea</h3>
     <div class="card" onclick="toggleCard(this)">
         <div class="card-header">
-            <div class="time">06:00</div>
-            <div class="event-title">起床出門</div>
+            <div class="time">整天</div>
+            <div class="event-title">東京迪士尼海洋</div>
             <div class="status-icon">▼</div>
         </div>
-        <div class="details">預計 07:30 抵達樂園排隊。<br>
-        <span class="tag tag-stay">住宿</span> 新宿。</div>
+        <div class="details">
+            盡情享受一整天樂園生活。<br>
+            <a href="https://maps.google.com/?cid=4703760703938833701&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 Google 導覽</a>
+        </div>
     </div>
 </div>
 
@@ -392,21 +322,14 @@
     <h3>4/15 (三) 哈利波特影城</h3>
     <div class="card" onclick="toggleCard(this)">
         <div class="card-header">
-            <div class="time">06:00</div>
-            <div class="event-title">起床出門</div>
+            <div class="time">09:00</div>
+            <div class="event-title">東京哈利波特影城</div>
             <div class="status-icon">▼</div>
         </div>
-        <div class="details">預計 07:30 抵達。<br>
-            <span class="important">預約</span> 門票時段為 09:00。
+        <div class="details">
+            <span class="important">預約</span> 門票時段為 09:00。<br>
+            <a href="https://maps.google.com/?cid=9641848556797388443&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 Google 導覽</a>
         </div>
-    </div>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
-            <div class="time">下午</div>
-            <div class="event-title">影城結束</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">前往池袋 OR 新宿逛街。</div>
     </div>
 </div>
 
@@ -414,61 +337,14 @@
     <h3>4/16 (四) Snoopy & 搬家 (部分回高)</h3>
     <div class="card" onclick="toggleCard(this)">
         <div class="card-header">
-            <div class="time">上午</div>
-            <div class="event-title">行李寄放 & 出發</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">將行李放於新宿花田。<br>
-            <span class="important">預約</span> Snoopy 博物館門票時間為 11:00。
-        </div>
-    </div>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
-            <div class="time">中午</div>
-            <div class="event-title">Grandberry Park OUTLET</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">中央林間商圈。</div>
-    </div>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
-            <div class="time">16:00</div>
-            <div class="event-title">回花田搬家</div>
+            <div class="time">11:00</div>
+            <div class="event-title">史努比博物館</div>
             <div class="status-icon">▼</div>
         </div>
         <div class="details">
-            <span class="tag tag-important">脫隊提醒</span> 祐/宣 回高雄。<br>
-            其餘行李搬往住：ojima7。<br>
-            晚上：秋葉原。
+            <span class="important">預約</span> Snoopy 博物館門票時間為 11:00。<br>
+            <a href="https://maps.google.com/?cid=8939438583186219214&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 Google 導覽</a>
         </div>
-    </div>
-</div>
-
-<div id="day7" class="day-page">
-    <h3>4/17 (五) 下町淺草 & 龜有阿兩</h3>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
-            <div class="time">09:00</div>
-            <div class="event-title">上野 / 淺草寺</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">傳統觀光行程。</div>
-    </div>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
-            <div class="time">中午</div>
-            <div class="event-title">燒肉吃到飽 (可排)</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">下午前往龜有尋找兩津勘吉像。</div>
-    </div>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
-            <div class="time">17:00</div>
-            <div class="event-title">烏龍派出所紀念館</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">龜有公園散策。回上野逛街/晚餐。</div>
     </div>
 </div>
 
@@ -476,66 +352,14 @@
     <h3>4/18 (六) 經典東京鐵塔</h3>
     <div class="card" onclick="toggleCard(this)">
         <div class="card-header">
-            <div class="time">08:00</div>
-            <div class="event-title">築地市場早餐</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">前往江戶城/皇居參觀。</div>
-    </div>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
             <div class="time">傍晚</div>
-            <div class="event-title">增上寺夜景</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">拍攝東京鐵塔同框景點。</div>
-    </div>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
-            <div class="time">晚上</div>
-            <div class="event-title">東京車站/銀座</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">購買名產伴手禮。</div>
-    </div>
-</div>
-
-<div id="day9" class="day-page">
-    <h3>4/19 (日) 最後採買 & 歸途</h3>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
-            <div class="time">08:00</div>
-            <div class="event-title">早餐出發</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">行李全上身。前往成田機場。</div>
-    </div>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
-            <div class="time">上午</div>
-            <div class="event-title">機場行李寄放</div>
+            <div class="event-title">東京鐵塔 / 增上寺</div>
             <div class="status-icon">▼</div>
         </div>
         <div class="details">
-            <span class="tag tag-important">提醒</span> T2 可以寄放行李。<br>
-            成田山表參道散策。
+            拍攝東京鐵塔的經典同框點。<br>
+            <a href="https://maps.google.com/?cid=5195627782660688349&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 Google 導覽</a>
         </div>
-    </div>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
-            <div class="time">中午</div>
-            <div class="event-title">酒酒井 Outlet</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">搭接駁車 (車程15分)。最後補貨。</div>
-    </div>
-    <div class="card" onclick="toggleCard(this)">
-        <div class="card-header">
-            <div class="time">16:45</div>
-            <div class="event-title">接駁車回機場</div>
-            <div class="status-icon">▼</div>
-        </div>
-        <div class="details">預計 17:45 前抵達航廈準備。</div>
     </div>
 </div>
 
@@ -564,24 +388,19 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // D1 & D2 備案切換 JavaScript
     function switchPlan(dayNum, planType) {
-        // 先隱藏該天所有的 section
         const dayContainer = document.getElementById('day' + dayNum);
         dayContainer.querySelectorAll('.contingency-section').forEach(section => {
             section.classList.remove('active');
         });
 
-        // 顯示被選擇的 section
         document.getElementById('day' + dayNum + '-' + planType).classList.add('active');
 
-        // 更新按鈕樣式
         const switcher = dayContainer.querySelector('.plan-switcher');
         switcher.querySelectorAll('.switcher-btn').forEach(btn => {
             btn.classList.remove('active');
         });
         
-        // 對應按鈕位置切換樣式
         if(planType === 'main') {
             switcher.querySelectorAll('.switcher-btn')[0].classList.add('active');
         } else {
