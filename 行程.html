@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2026 日本櫻花紀行 (New + Maps)</title>
+    <title>2026 日本櫻花紀行</title>
     <style>
         :root {
             --jp-red: #d93535;
@@ -21,7 +21,6 @@
             color: #333;
         }
 
-        /* 標題欄 */
         .header {
             background: var(--jp-red);
             color: white;
@@ -33,7 +32,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        /* D1 & D2 備案切換按鈕 */
         .plan-switcher {
             display: flex;
             justify-content: center;
@@ -55,16 +53,13 @@
             border-color: var(--jp-red);
         }
 
-        /* 日期分頁內容 */
         .day-page { display: none; padding: 10px 15px; animation: fadeIn 0.3s ease; }
         .day-page.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Contingency Sections (hide by default) */
         .contingency-section { display: none; }
         .contingency-section.active { display: block; }
 
-        /* 行程卡片 */
         .card {
             background: white;
             margin-bottom: 10px;
@@ -73,9 +68,7 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             border: 1px solid transparent;
         }
-        .card.active-backup {
-            border-color: var(--main-yellow);
-        }
+        .card.active-backup { border-color: var(--main-yellow); }
 
         .card-header {
             display: flex;
@@ -106,20 +99,17 @@
 
         .card.open .status-icon { transform: rotate(180deg); }
 
-        /* 展開細節區 */
         .details {
             display: none;
-            padding: 0 16px 16px 86px;
+            padding: 10px 16px 16px 86px;
             font-size: 0.92em;
             line-height: 1.6;
             color: #555;
             border-top: 1px dashed #eee;
-            padding-top: 10px;
         }
 
         .card.open .details { display: block; }
 
-        /* 標籤樣式 */
         .tag {
             display: inline-block;
             padding: 1px 6px;
@@ -134,7 +124,6 @@
         .tag-important { background: #ffebee; color: #c62828; }
         .tag-backup { background: #fffde7; color: #f57f17; border: 1px solid #fff9c4; }
 
-        /* 導覽按鈕樣式 */
         .btn-map {
             display: inline-flex;
             align-items: center;
@@ -151,7 +140,6 @@
         }
         .btn-map:active { background: #3367D6; }
 
-        /* 底部固定導航 */
         .nav-bar {
             position: fixed;
             bottom: 0;
@@ -165,7 +153,7 @@
         }
 
         .nav-item {
-            flex: 0 0 65px;
+            flex: 0 0 62px;
             padding: 12px 0;
             text-align: center;
             font-size: 11px;
@@ -180,6 +168,117 @@
             border-top: 3px solid var(--jp-red);
             background: #fff8f8;
         }
+
+        /* ========== 總覽頁面樣式 ========== */
+        #day0 { padding: 0 0 10px 0; }
+
+        .ov-stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            padding: 12px 12px 0;
+        }
+        .ov-stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 10px 8px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .ov-stat-num { font-size: 22px; font-weight: 600; color: var(--jp-red); line-height: 1.1; }
+        .ov-stat-lbl { font-size: 10px; color: #999; margin-top: 2px; }
+
+        .ov-section-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: #aaa;
+            letter-spacing: 0.8px;
+            padding: 14px 14px 6px;
+            text-transform: uppercase;
+        }
+
+        .ov-day-list { padding: 0 12px; display: flex; flex-direction: column; gap: 8px; }
+
+        .ov-day-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .ov-day-row {
+            display: flex;
+            align-items: center;
+            padding: 11px 14px;
+            gap: 11px;
+        }
+        .ov-day-badge {
+            flex: 0 0 38px;
+            height: 38px;
+            border-radius: 9px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        .ov-day-badge .dn { font-size: 13px; font-weight: 700; }
+        .ov-day-badge .dt { font-size: 9px; opacity: 0.7; margin-top: 2px; }
+
+        .ov-day-info { flex: 1; min-width: 0; }
+        .ov-day-name { font-size: 13px; font-weight: 600; color: #333; line-height: 1.3; }
+        .ov-day-spots { font-size: 11px; color: #999; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .ov-day-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+
+        .ov-pill {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 7px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .ov-pill-drive  { background: #fff3e0; color: #b45309; }
+        .ov-pill-food   { background: #fef2f2; color: #b91c1c; }
+        .ov-pill-stay   { background: #eff6ff; color: #1d4ed8; }
+        .ov-pill-plan   { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+        .ov-pill-green  { background: #f0fdf4; color: #166534; }
+        .ov-pill-purple { background: #f5f3ff; color: #5b21b6; }
+        .ov-pill-blue   { background: #eff6ff; color: #1d4ed8; }
+
+        .ov-chevron { color: #ddd; font-size: 16px; flex: 0 0 14px; }
+
+        .ov-accom-list { padding: 0 12px; display: flex; flex-direction: column; gap: 7px; }
+        .ov-accom-card {
+            background: white;
+            border-radius: 10px;
+            padding: 11px 14px;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .ov-accom-icon {
+            width: 34px; height: 34px; border-radius: 8px;
+            background: #fef2f2;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; flex: 0 0 34px;
+        }
+        .ov-accom-name { font-size: 13px; font-weight: 600; color: #333; }
+        .ov-accom-nights { font-size: 11px; color: #999; margin-top: 2px; }
+
+        .ov-note-box {
+            margin: 0 12px;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 10px;
+            padding: 11px 14px;
+            font-size: 12px;
+            color: #92400e;
+            line-height: 1.9;
+        }
+        .ov-note-box b { font-weight: 700; }
     </style>
 </head>
 <body>
@@ -189,9 +288,213 @@
     <div style="font-size: 1.1em; font-weight: bold;">日本櫻花紀行</div>
 </div>
 
-<div id="day1" class="day-page active">
-    <h3>4/11 (六) 機場集合 & 富士自駕</h3>
-    
+<!-- ========== 總覽頁面 ========== -->
+<div id="day0" class="day-page active">
+
+    <div class="ov-section-title">每日行程</div>
+
+    <div class="ov-day-list">
+
+        <div class="ov-day-card" onclick="goToDay(1)">
+            <div class="ov-day-row">
+                <div class="ov-day-badge" style="background:#fef2f2; color:#b91c1c;">
+                    <span class="dn">D1</span><span class="dt">4/11</span>
+                </div>
+                <div class="ov-day-info">
+                    <div class="ov-day-name">機場集合 · 富士山自駕</div>
+                    <div class="ov-day-spots">成田 → 新倉山淺間公園 → 富士吉田 → 河口湖</div>
+                    <div class="ov-day-tags">
+                        <span class="ov-pill ov-pill-drive">🚗 自駕</span>
+                        <span class="ov-pill ov-pill-plan">A 富士山 / B 高遠</span>
+                        <span class="ov-pill ov-pill-food">不動茶屋 / 小作</span>
+                        <span class="ov-pill ov-pill-stay">民宿 Hoco</span>
+                    </div>
+                </div>
+                <div class="ov-chevron">›</div>
+            </div>
+        </div>
+
+        <div class="ov-day-card" onclick="goToDay(2)">
+            <div class="ov-day-row">
+                <div class="ov-day-badge" style="background:#fef2f2; color:#b91c1c;">
+                    <span class="dn">D2</span><span class="dt">4/12</span>
+                </div>
+                <div class="ov-day-info">
+                    <div class="ov-day-name">高遠城址 · 還車衝刺東京</div>
+                    <div class="ov-day-spots">高遠城址公園 → 河口淺間神社 → 中野 → 新宿</div>
+                    <div class="ov-day-tags">
+                        <span class="ov-pill ov-pill-drive">🚗 自駕 (還車)</span>
+                        <span class="ov-pill ov-pill-food">高遠そば / 陸蒸気</span>
+                        <span class="ov-pill ov-pill-stay">花宿新宿</span>
+                    </div>
+                </div>
+                <div class="ov-chevron">›</div>
+            </div>
+        </div>
+
+        <div class="ov-day-card" onclick="goToDay(3)">
+            <div class="ov-day-row">
+                <div class="ov-day-badge" style="background:#fff7ed; color:#c2410c;">
+                    <span class="dn">D3</span><span class="dt">4/13</span>
+                </div>
+                <div class="ov-day-info">
+                    <div class="ov-day-name">原宿 · 澀谷</div>
+                    <div class="ov-day-spots">明治神宮 → 竹下通 → 表參道 → 澀谷</div>
+                    <div class="ov-day-tags">
+                        <span class="ov-pill ov-pill-food">敘敘苑燒肉</span>
+                        <span class="ov-pill ov-pill-stay">花宿新宿</span>
+                    </div>
+                </div>
+                <div class="ov-chevron">›</div>
+            </div>
+        </div>
+
+        <div class="ov-day-card" onclick="goToDay(4)">
+            <div class="ov-day-row">
+                <div class="ov-day-badge" style="background:#eff6ff; color:#1d4ed8;">
+                    <span class="dn">D4</span><span class="dt">4/14</span>
+                </div>
+                <div class="ov-day-info">
+                    <div class="ov-day-name">迪士尼海洋 DisneySea</div>
+                    <div class="ov-day-spots">東京 DisneySea → 新宿晚餐</div>
+                    <div class="ov-day-tags">
+                        <span class="ov-pill ov-pill-blue">🎢 主題樂園</span>
+                        <span class="ov-pill ov-pill-stay">花宿新宿</span>
+                    </div>
+                </div>
+                <div class="ov-chevron">›</div>
+            </div>
+        </div>
+
+        <div class="ov-day-card" onclick="goToDay(5)">
+            <div class="ov-day-row">
+                <div class="ov-day-badge" style="background:#f5f3ff; color:#5b21b6;">
+                    <span class="dn">D5</span><span class="dt">4/15</span>
+                </div>
+                <div class="ov-day-info">
+                    <div class="ov-day-name">哈利波特影城</div>
+                    <div class="ov-day-spots">Warner Bros. Studio → 池袋 / 新宿</div>
+                    <div class="ov-day-tags">
+                        <span class="ov-pill ov-pill-purple">⚡ 哈利波特</span>
+                        <span class="ov-pill ov-pill-food">牛舌定食</span>
+                        <span class="ov-pill ov-pill-stay">花宿新宿</span>
+                    </div>
+                </div>
+                <div class="ov-chevron">›</div>
+            </div>
+        </div>
+
+        <div class="ov-day-card" onclick="goToDay(6)">
+            <div class="ov-day-row">
+                <div class="ov-day-badge" style="background:#f0fdf4; color:#15803d;">
+                    <span class="dn">D6</span><span class="dt">4/16</span>
+                </div>
+                <div class="ov-day-info">
+                    <div class="ov-day-name">Snoopy 博物館 · 搬家</div>
+                    <div class="ov-day-spots">Snoopy Museum → Grandberry OUTLET → 秋葉原</div>
+                    <div class="ov-day-tags">
+                        <span class="ov-pill ov-pill-green">🛍 OUTLET</span>
+                        <span class="ov-pill ov-pill-plan">部分成員回高雄</span>
+                        <span class="ov-pill ov-pill-stay">ojima7</span>
+                    </div>
+                </div>
+                <div class="ov-chevron">›</div>
+            </div>
+        </div>
+
+        <div class="ov-day-card" onclick="goToDay(7)">
+            <div class="ov-day-row">
+                <div class="ov-day-badge" style="background:#fff7ed; color:#c2410c;">
+                    <span class="dn">D7</span><span class="dt">4/17</span>
+                </div>
+                <div class="ov-day-info">
+                    <div class="ov-day-name">下町 淺草 · 龜有阿兩</div>
+                    <div class="ov-day-spots">上野 → 淺草寺 → 燒肉 → 龜有公園</div>
+                    <div class="ov-day-tags">
+                        <span class="ov-pill ov-pill-food">燒肉吃到飽</span>
+                        <span class="ov-pill ov-pill-stay">ojima7</span>
+                    </div>
+                </div>
+                <div class="ov-chevron">›</div>
+            </div>
+        </div>
+
+        <div class="ov-day-card" onclick="goToDay(8)">
+            <div class="ov-day-row">
+                <div class="ov-day-badge" style="background:#fff7ed; color:#c2410c;">
+                    <span class="dn">D8</span><span class="dt">4/18</span>
+                </div>
+                <div class="ov-day-info">
+                    <div class="ov-day-name">築地 · 東京鐵塔 · 銀座</div>
+                    <div class="ov-day-spots">築地早餐 → 皇居 → 增上寺 → 東京鐵塔 → 銀座</div>
+                    <div class="ov-day-tags">
+                        <span class="ov-pill ov-pill-food">築地海鮮 / HARBS</span>
+                        <span class="ov-pill ov-pill-stay">ojima7</span>
+                    </div>
+                </div>
+                <div class="ov-chevron">›</div>
+            </div>
+        </div>
+
+        <div class="ov-day-card" onclick="goToDay(9)">
+            <div class="ov-day-row">
+                <div class="ov-day-badge" style="background:#fef2f2; color:#b91c1c;">
+                    <span class="dn">D9</span><span class="dt">4/19</span>
+                </div>
+                <div class="ov-day-info">
+                    <div class="ov-day-name">成田山 · 酒酒井 Outlet · 回台</div>
+                    <div class="ov-day-spots">成田山新勝寺 → 酒酒井 Outlet → 成田機場</div>
+                    <div class="ov-day-tags">
+                        <span class="ov-pill ov-pill-drive">🛫 17:45 check-in</span>
+                        <span class="ov-pill ov-pill-food">川豊鰻魚飯</span>
+                    </div>
+                </div>
+                <div class="ov-chevron">›</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="ov-section-title">住宿安排</div>
+    <div class="ov-accom-list">
+        <div class="ov-accom-card">
+            <div class="ov-accom-icon">🏠</div>
+            <div>
+                <div class="ov-accom-name">OPENSALE Hoco 富士吉田</div>
+                <div class="ov-accom-nights">D1 · 1晚 — 河口湖區域</div>
+            </div>
+        </div>
+        <div class="ov-accom-card">
+            <div class="ov-accom-icon">🌸</div>
+            <div>
+                <div class="ov-accom-name">花宿新宿 HANAYADO SHINJUKU</div>
+                <div class="ov-accom-nights">D2–D5 · 4晚 — 新宿</div>
+            </div>
+        </div>
+        <div class="ov-accom-card">
+            <div class="ov-accom-icon">🏙</div>
+            <div>
+                <div class="ov-accom-name">ojima7</div>
+                <div class="ov-accom-nights">D6–D8 · 3晚 — 大島駅附近</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ov-section-title">重要提醒</div>
+    <div class="ov-note-box">
+        <b>🚗 自駕</b> D1–D2 租車，注意中央道收假塞車<br>
+        <b>⚠️ D6 脫隊</b> 祐／宣 於 D6 搭機回高雄<br>
+        <b>🎡 預約票券</b> DisneySea、哈利波特影城、Snoopy 博物館均需提前預約<br>
+        <b>📦 寄物</b> D9 行李可寄放於成田 T2
+    </div>
+
+    <div style="height: 14px;"></div>
+</div>
+
+<!-- ========== D1 ========== -->
+<div id="day1" class="day-page">
+    <h3>4/11 (六) 機場集合 &amp; 富士自駕</h3>
+
     <div class="plan-switcher">
         <button class="switcher-btn active" onclick="switchPlan(1, 'main')">A 富士山</button>
         <button class="switcher-btn" onclick="switchPlan(1, 'backup')">B 高遠</button>
@@ -245,7 +548,7 @@
         <div class="card" onclick="toggleCard(this)">
             <div class="card-header">
                 <div class="time">晚上</div>
-                <div class="event-title">夜櫻 & 食事 & 抵達</div>
+                <div class="event-title">夜櫻 &amp; 食事 &amp; 抵達</div>
                 <div class="status-icon">▼</div>
             </div>
             <div class="details">
@@ -276,7 +579,7 @@
         <div class="card active-backup" onclick="toggleCard(this)">
             <div class="card-header">
                 <div class="time">晚上</div>
-                <div class="event-title">夜櫻 & 食事 & 抵達</div>
+                <div class="event-title">夜櫻 &amp; 食事 &amp; 抵達</div>
                 <div class="status-icon">▼</div>
             </div>
             <div class="details">
@@ -284,14 +587,15 @@
                 <span class="tag tag-food">餐廳</span> 高遠そば ますや。<br>
                 <a href="https://maps.google.com/?q=高遠そば 華留運" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 高遠そば 華留運</a>
                 <a href="https://maps.google.com/?q=河口湖" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 河口湖</a>
-                 <a href="https://maps.google.com/?q=OPENSALE Hoco 富士吉田" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 民宿</a>
+                <a href="https://maps.google.com/?q=OPENSALE Hoco 富士吉田" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 民宿</a>
             </div>
         </div>
     </div>
 </div>
 
+<!-- ========== D2 ========== -->
 <div id="day2" class="day-page">
-    <h3>4/12 (日) 高遠城址 & 還車衝刺</h3>
+    <h3>4/12 (日) 高遠城址 &amp; 還車衝刺</h3>
 
     <div class="plan-switcher">
         <button class="switcher-btn active" onclick="switchPlan(2, 'main')">主要行程</button>
@@ -346,7 +650,7 @@
         <div class="card" onclick="toggleCard(this)">
             <div class="card-header">
                 <div class="time">晚上</div>
-                <div class="event-title">中野還車 & 晚餐</div>
+                <div class="event-title">中野還車 &amp; 晚餐</div>
                 <div class="status-icon">▼</div>
             </div>
             <div class="details">
@@ -354,7 +658,6 @@
                 正在變身中(拉麵) OR <span class="tag tag-food">餐廳</span> 陸蒸気居酒屋(烤魚)。<br>
                 <a href="https://maps.google.com/?q=陸蒸気" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 陸蒸気</a>
                 <a href="https://maps.google.com/?q=花宿新宿 HANAYADO SHINJUKU" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 花宿新宿</a>
-                
             </div>
         </div>
     </div>
@@ -392,7 +695,7 @@
         <div class="card active-backup" onclick="toggleCard(this)">
             <div class="card-header">
                 <div class="time">16:00</div>
-                <div class="event-title">中野還車 & 晚餐</div>
+                <div class="event-title">中野還車 &amp; 晚餐</div>
                 <div class="status-icon">▼</div>
             </div>
             <div class="details">
@@ -405,12 +708,13 @@
     </div>
 </div>
 
+<!-- ========== D3 ========== -->
 <div id="day3" class="day-page">
     <h3>4/13 (一) 原宿與澀谷</h3>
     <div class="card" onclick="toggleCard(this)">
         <div class="card-header">
             <div class="time">上午</div>
-            <div class="event-title">明治神宮 & 街區散策</div>
+            <div class="event-title">明治神宮 &amp; 街區散策</div>
             <div class="status-icon">▼</div>
         </div>
         <div class="details">
@@ -423,7 +727,7 @@
     <div class="card" onclick="toggleCard(this)">
         <div class="card-header">
             <div class="time">12:00</div>
-            <div class="event-title">澀谷午餐 & 觀景</div>
+            <div class="event-title">澀谷午餐 &amp; 觀景</div>
             <div class="status-icon">▼</div>
         </div>
         <div class="details">
@@ -437,6 +741,7 @@
     </div>
 </div>
 
+<!-- ========== D4 ========== -->
 <div id="day4" class="day-page">
     <h3>4/14 (二) 迪士尼海洋 DisneySea</h3>
     <div class="card" onclick="toggleCard(this)">
@@ -464,6 +769,7 @@
     </div>
 </div>
 
+<!-- ========== D5 ========== -->
 <div id="day5" class="day-page">
     <h3>4/15 (三) 哈利波特影城</h3>
     <div class="card" onclick="toggleCard(this)">
@@ -484,17 +790,15 @@
             <div class="status-icon">▼</div>
         </div>
         <div class="details">
-            <span class="important"></span><p>影城的QRCODE記得註冊，互動會用，影城內有wifi<br>
-     預約時間是進入展區的時間，可提早半小時去影城紀念品店採買，剩下等逛完再買<br>
-     王十字車站展區是<p style="color:Tomato;">唯一有販售霍格華茲入學通知</p>的地方，其他地方沒有販售，且離開後就無法回頭<br>
-     王十字車站除了入學通知還有其他限定品，像是特快車的車票，入學通知書是英文的，可<p style="color:Tomato;">先在家用郵局查自己的國際地址，到時候在現場輸入</p><br>
-     展區中間的餐廳通常爆滿，不要期待能在那吃到午餐，建議可提早抵達在紀念品店的對面的餐廳吃，或逛完再出去吃<br>
-     不要買飛天掃帚照片<br>
-     影城商品無法退稅，但是紀念品店的商品價格幾乎是台灣的1/2，也很多限定商品，但附近的郵局通常不會讓你寄，除非你做好萬全的準備<br></p>
-            
+            <p>影城的QRCODE記得註冊，互動會用，影城內有wifi<br>
+            預約時間是進入展區的時間，可提早半小時去影城紀念品店採買，剩下等逛完再買<br>
+            王十字車站展區是<span style="color:Tomato;">唯一有販售霍格華茲入學通知</span>的地方，其他地方沒有販售，且離開後就無法回頭<br>
+            王十字車站除了入學通知還有其他限定品，像是特快車的車票，入學通知書是英文的，可<span style="color:Tomato;">先在家用郵局查自己的國際地址，到時候在現場輸入</span><br>
+            展區中間的餐廳通常爆滿，不要期待能在那吃到午餐，建議可提早抵達在紀念品店的對面的餐廳吃，或逛完再出去吃<br>
+            不要買飛天掃帚照片<br>
+            影城商品無法退稅，但是紀念品店的商品價格幾乎是台灣的1/2，也很多限定商品，但附近的郵局通常不會讓你寄，除非你做好萬全的準備</p>
         </div>
     </div>
-    
     <div class="card" onclick="toggleCard(this)">
         <div class="card-header">
             <div class="time">下午</div>
@@ -508,15 +812,16 @@
             <a href="https://maps.app.goo.gl/hm5WwTGo4TEamgt67" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 牛舌定食</a>
         </div>
     </div>
-    <img src="map-2-1024x959-1.webp" alt="map">
+    <img src="map-2-1024x959-1.webp" alt="map" style="width:100%;border-radius:10px;margin-top:10px;">
 </div>
 
+<!-- ========== D6 ========== -->
 <div id="day6" class="day-page">
-    <h3>4/16 (四) Snoopy & 搬家 (部分回高)</h3>
+    <h3>4/16 (四) Snoopy &amp; 搬家 (部分回高)</h3>
     <div class="card" onclick="toggleCard(this)">
         <div class="card-header">
             <div class="time">上午</div>
-            <div class="event-title">行李寄放 & 出發</div>
+            <div class="event-title">行李寄放 &amp; 出發</div>
             <div class="status-icon">▼</div>
         </div>
         <div class="details">
@@ -553,8 +858,9 @@
     </div>
 </div>
 
+<!-- ========== D7 ========== -->
 <div id="day7" class="day-page">
-    <h3>4/17 (五) 下町淺草 & 龜有阿兩</h3>
+    <h3>4/17 (五) 下町淺草 &amp; 龜有阿兩</h3>
     <div class="card" onclick="toggleCard(this)">
         <div class="card-header">
             <div class="time">09:00</div>
@@ -570,7 +876,7 @@
     <div class="card" onclick="toggleCard(this)">
         <div class="card-header">
             <div class="time">中午</div>
-            <div class="event-title">美食 & 龜有</div>
+            <div class="event-title">美食 &amp; 龜有</div>
             <div class="status-icon">▼</div>
         </div>
         <div class="details">
@@ -581,6 +887,7 @@
     </div>
 </div>
 
+<!-- ========== D8 ========== -->
 <div id="day8" class="day-page">
     <h3>4/18 (六) 經典東京鐵塔</h3>
     <div class="card" onclick="toggleCard(this)">
@@ -617,13 +924,14 @@
             購買名產伴手禮。<br>
             <a href="https://maps.google.com/?q=東京駅" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 東京車站</a>
             <a href="https://maps.google.com/?q=銀座" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 銀座</a>
-            <a href="https://maps.app.goo.gl/ggYdDzrcLSZhF9Rs5" target="_blank" class="btn-map" onclick="event.stopPropagation();"></a>📍 HARBS</a>
+            <a href="https://maps.app.goo.gl/ggYdDzrcLSZhF9Rs5" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 HARBS</a>
         </div>
     </div>
 </div>
 
+<!-- ========== D9 ========== -->
 <div id="day9" class="day-page">
-    <h3>4/19 (日) 最後採買 & 歸途</h3>
+    <h3>4/19 (日) 最後採買 &amp; 歸途</h3>
     <div class="card" onclick="toggleCard(this)">
         <div class="card-header">
             <div class="time">08:00</div>
@@ -645,7 +953,12 @@
             <div class="status-icon">▼</div>
         </div>
         <div class="details">
-            搭接駁車 (車程15分)。最後補貨。<br>機場第2候機樓站（1樓, 3號站牌）<br>https://www.premiumoutlets.co.jp/cht/shisui/brands/?tab=1
+            搭接駁車 (車程15分)。最後補貨。<br>機場第2候機樓站（1樓, 3號站牌）<br>
+            去 10:45/11:33/12:48/13:38/14:33/15:33
+            回 15:15/15:45/16:15/16:45/17:40/18:40
+
+            <a href="https://www.premiumoutlets.co.jp/cht/shisui/brands/?tab=1" target="_blank" class="btn-map" onclick="event.stopPropagation();">官網</a>
+            
             <a href="https://maps.google.com/?q=酒々井プレミアム・アウトレット" target="_blank" class="btn-map" onclick="event.stopPropagation();">📍 酒酒井Outlet</a>
         </div>
     </div>
@@ -662,8 +975,10 @@
     </div>
 </div>
 
+<!-- ========== 底部導航 ========== -->
 <div class="nav-bar">
-    <div class="nav-item active" onclick="switchDay(1, this)">D1<br>4/11</div>
+    <div class="nav-item active" onclick="switchDay(0, this)">總覽<br>📋</div>
+    <div class="nav-item" onclick="switchDay(1, this)">D1<br>4/11</div>
     <div class="nav-item" onclick="switchDay(2, this)">D2<br>4/12</div>
     <div class="nav-item" onclick="switchDay(3, this)">D3<br>4/13</div>
     <div class="nav-item" onclick="switchDay(4, this)">D4<br>4/14</div>
@@ -692,19 +1007,23 @@
         dayContainer.querySelectorAll('.contingency-section').forEach(section => {
             section.classList.remove('active');
         });
-
         document.getElementById('day' + dayNum + '-' + planType).classList.add('active');
-
         const switcher = dayContainer.querySelector('.plan-switcher');
         switcher.querySelectorAll('.switcher-btn').forEach(btn => {
             btn.classList.remove('active');
         });
-        
-        if(planType === 'main') {
+        if (planType === 'main') {
             switcher.querySelectorAll('.switcher-btn')[0].classList.add('active');
         } else {
             switcher.querySelectorAll('.switcher-btn')[1].classList.add('active');
         }
+    }
+
+    // 從總覽點擊卡片跳轉對應天數
+    function goToDay(dayNum) {
+        const navItems = document.querySelectorAll('.nav-item');
+        switchDay(dayNum, navItems[dayNum]);
+        navItems[dayNum].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }
 </script>
 
